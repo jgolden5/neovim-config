@@ -1,3 +1,4 @@
+print("keymaps.lua loaded") --
 vim.cmd("command! W w") --equivalent to: vim.api.nvim_set_keymap('c', 'W', 'w', { noremap = true }), EXCEPT that in the latter, hitting :W actually displays :w, which it is effectively treated as
 
 vim.keymap.set('n', '<leader>h', '<C-w>h', { desc = "move left window" })
@@ -8,4 +9,5 @@ vim.keymap.set('n', '<leader>r', function()
   vim.cmd("source ~/.config/nvim/init.lua")
   print("Sourced nvim init.lua config file")
 end, { desc = "Reload nvim init.lua config" })
-print("keymaps.lua loaded") --
+
+vim.keymap.set('n', 'ZA', ':qa<CR>', { desc = "quit all shortcut" })
