@@ -1,3 +1,5 @@
+require("colors.catpuccin_simplified")
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
