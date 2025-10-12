@@ -13,5 +13,9 @@ vim.keymap.set('n', '<leader>r', function()
   vim.cmd("source ~/.config/nvim/init.lua")
   print("Sourced nvim init.lua config file")
 end, { desc = "Reload nvim init.lua config" })
+vim.keymap.set('n', '<leader>o', function() --useful for opening html files or other that can be viewed in the browser
+  vim.cmd("!open %")
+  print("Opened current file in browser")
+end, { desc = "Open current file in browser" })
 
 vim.keymap.set('n', 'ZA', ':qa<CR>', { desc = "quit all shortcut" })
