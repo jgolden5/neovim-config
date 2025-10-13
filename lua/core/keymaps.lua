@@ -2,9 +2,13 @@ print("keymaps.lua loaded") --
 vim.cmd("command! W w") --equivalent to: vim.api.nvim_set_keymap('c', 'W', 'w', { noremap = true }), EXCEPT that in the latter, hitting :W actually displays :w, which it is effectively treated as
 
 vim.keymap.set('n', '<leader>h', '<C-w>h', { desc = "move left window" })
+vim.keymap.set('n', '<leader>H', '<C-w>H', { desc = "move current window to the left" })
 vim.keymap.set('n', '<leader>j', '<C-w>j', { desc = "move down window" })
+vim.keymap.set('n', '<leader>J', '<C-w>J', { desc = "move current window to the bottom" })
 vim.keymap.set('n', '<leader>k', '<C-w>k', { desc = "move up window" })
+vim.keymap.set('n', '<leader>K', '<C-w>K', { desc = "move current window to the top" })
 vim.keymap.set('n', '<leader>l', '<C-w>l', { desc = "move right window" })
+vim.keymap.set('n', '<leader>L', '<C-w>L', { desc = "move current window to the right" })
 vim.keymap.set('n', '<leader>u', '<C-u>zz', { desc = "move up 1/2 page and recenter" })
 vim.keymap.set('n', '<leader>d', '<C-d>zz', { desc = "move down 1/2 page and recenter" })
 vim.keymap.set('n', '<leader>b', '<C-b>zz', { desc = "move up 1 page and recenter" })
