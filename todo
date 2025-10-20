@@ -1,0 +1,3 @@
+transfer everything from vimrc to init.lua (if there's anything unique in there. Also, make sure I'm using macOS so I can actually test this)
+download telescope and play with it to see what it does exactly that makes neovim so much better than vim
+compare the neovim :terminal experience with vim's :!bash experience, and see if there is a noticeable difference between the two
