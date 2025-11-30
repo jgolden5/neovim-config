@@ -13,6 +13,10 @@ vim.keymap.set('n', '<leader>u', '<C-u>zz', { desc = "move up 1/2 page and recen
 vim.keymap.set('n', '<leader>d', '<C-d>zz', { desc = "move down 1/2 page and recenter" })
 vim.keymap.set('n', '<leader>b', '<C-b>zz', { desc = "move up 1 page and recenter" })
 vim.keymap.set('n', '<leader>f', '<C-f>zz', { desc = "move down 1 page and recenter" })
+vim.keymap.set('n', '<Leader>ya', "mmggVG\"+y'mzz", { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>yp', "mmvap\"+y'm", { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>yy', "V\"+y", { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>p', "\"+p", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>r', function()
   vim.cmd("source ~/.config/nvim/init.lua")
   print("Sourced nvim init.lua config file")
@@ -21,5 +25,12 @@ vim.keymap.set('n', '<leader>o', function() --useful for opening html files or o
   vim.cmd("!open %")
   print("Opened current file in browser")
 end, { desc = "Open current file in browser" })
-
 vim.keymap.set('n', 'ZA', ':qa<CR>', { desc = "quit all shortcut" })
+
+-- Visual mode keymaps
+vim.keymap.set('v', '<Leader>c', "\"+y", { noremap = true, silent = true })
+vim.keymap.set('v', '<C-c>', "\"+y:lua vim.cmd('echo \"copied the following to clipboard: \" .. vim.fn.getreg('+') )'<CR><Esc>", { noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>p', "\"+p", { noremap = true, silent = true })
+vim.keymap.set('v', '<C-v>', "\"+p", { noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>g', "\"+y:!open https://www.google.com/search?q=<C-r>+<CR><CR>", { noremap = true, silent = true })
+vim.keymap.set('v', '<Leader>s', "\"+y:!open $(pbpaste)<CR><CR>", { noremap = true, silent = true })
