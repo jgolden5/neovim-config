@@ -25,7 +25,7 @@ vim.keymap.set('n', '<leader>o', function() --useful for opening html files or o
   vim.cmd("!open %")
   print("Opened current file in browser")
 end, { desc = "Open current file in browser" })
-vim.keymap.set('n', 'ZA', ':qa<CR>', { desc = "quit all shortcut" })
+vim.keymap.set('n', 'ZA', ':xa<CR>', { desc = "quit and save all shortcut" })
 
 -- Visual mode keymaps
 vim.keymap.set('v', '<Leader>c', "\"+y", { noremap = true, silent = true })
