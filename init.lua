@@ -1,7 +1,6 @@
 vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschemes and configs usually enable this automatically, but I'll keep it until I understand how things work a little bit better
 vim.cmd("highlight CursorColumn ctermbg=white")
 
-
 vim.opt.fileencoding = 'utf-8'
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -16,27 +15,21 @@ vim.opt.timeout = false --keys requiring additional keys will wait forever until
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 500
 
-
 vim.g.mapleader = " "
 
-
 vim.api.nvim_create_user_command("W", "write", {})
-
 
 --disable Q since I never enter Ex mode
 vim.keymap.set("n", "Q", "<Nop>")
 
-
 --generic movement helps
 vim.keymap.set("n", "<leader>i", "ggVG:s/  /  /g<CR>")
-
 
 --page navigation
 vim.keymap.set("n", "<leader>d", "<C-d>zz")
 vim.keymap.set("n", "<leader>u", "<C-u>zz")
 vim.keymap.set("n", "<leader>f", "<C-f>zz")
 vim.keymap.set("n", "<leader>b", "<C-b>Hzz")
-
 
 --filesystem manipulation
 vim.keymap.set("n", "<Leader>w", ":w<CR>")
@@ -46,25 +39,21 @@ vim.keymap.set("n", "<leader>X", ":xa<CR>")
 vim.keymap.set("n", "ZA", ":xa<CR>")
 vim.keymap.set("n", "<leader>Q", "ZQ")
 
-
 --filesystem with fill-in-the-blank functionality
 vim.keymap.set("n", "<leader>e", ":e ")
 vim.keymap.set("n", "<leader>E", ":wa<CR>:windo e ")
 vim.keymap.set("n", "<leader>s", ":split ")
 vim.keymap.set("n", "<leader>S", ":vsplit ")
 
-
 vim.keymap.set("n", "<leader>ve", ":w<CR>viwy:e <C-r>0<CR>:echo 'remember you can switch between files with Leader+o or Ctl+^'<CR>")
 vim.keymap.set("n", "<leader>vs", "viwy:split <C-r>0<CR>")
 vim.keymap.set("n", "<leader>vS", "viwy:vsplit <C-r>0<CR>")
 vim.keymap.set("n", "<leader>vt", "viwy:tabnew <C-r>0<CR>")
 
-
 vim.keymap.set("v", "<leader>ve", "<Esc>:w<CR>gvy:e <C-r>0<CR>:echo 'remember you can switch between files with Leader+o or Ctl+^'<CR>")
 vim.keymap.set("v", "<leader>vs", "y:split <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vS", "y:vsplit <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vt", "y:tabnew <C-r>0<CR>")
-
 
 --fancy
 local function rename_file()
@@ -81,7 +70,6 @@ local function rename_file()
 end 
 vim.keymap.set("n", "<leader>n", rename_file)
 
-
 --window/pane navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
@@ -95,12 +83,10 @@ vim.keymap.set("n", "<leader>r", "<C-w>r")
 vim.keymap.set("n", "<leader>=", "<C-w>=")
 vim.keymap.set("n", "<leader>o", ":w<CR><C-^>")
 
-
 --echo output keymaps
 vim.keymap.set("n", "<Leader>%", function()
   print(vim.fn.expand("%:p"))
 end)
-
 
 --tab navigation
 vim.keymap.set("n", "<Leader>tc", "<cmd>tabclose<CR>")
@@ -123,7 +109,6 @@ vim.keymap.set("n", "<Leader>8", "<cmd>tabn 8<CR>")
 vim.keymap.set("n", "<Leader>9", "<cmd>tabn 9<CR>")
 vim.keymap.set("n", "<Leader>0", "<cmd>tabn 10<CR>")
 
-
 --keymap settings
 vim.keymap.set("n", "<Leader>mh", ":set hlsearch<CR>")
 vim.keymap.set("n", "<Leader>mH", ":set nohlsearch<CR>")
@@ -136,11 +121,28 @@ vim.keymap.set("n", "<Leader>mT", ":set textwidth=0<CR>")
 vim.keymap.set("n", "<Leader>mw", ":set wrap<CR>")
 vim.keymap.set("n", "<Leader>mW", ":set nowrap<CR>")
 
-
 --copy/paste/clipboard
 vim.keymap.set("n", "<Leader>ya", function()
   local buffer_as_file = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local buffer_as_string = table.concat(buffer_as_file, "\n")
   vim.fn.setreg("+", buffer_as_string) --copies buffer as string to clipboard
-  print("copied entire current file '" .. vim.fn.expand("%") .. "' to the clipboard")
+  local file_name = vim.fn.expand("%")
+  print("copied entire current file '" .. file_name .. "' to the clipboard")
 end)
+
+vim.keymap.set("n", "<Leader>yp", function()
+  local cursor = vim.fn.line(".")
+  local paragraph_start = vim.fn.search("^$", "bnW") --b = search backward from cursor position; n = don't move the cursor after the search; W = don't wrap around the file to search
+  if paragraph_start == 0 then --0 is returned by vim.fn.search if no search match was found
+    paragraph_start = 1
+  else
+    paragraph_start = paragraph_start + 1
+  end
+  local paragraph_end = vim.fn.search("^$", "nW")
+  paragraph_end = (paragraph_end == 0) and vim.fn.line("$") or (paragraph_end - 1) --note this is the same as paragraph_start's calculation, but I did it in ternary format for now for my personal reference to distinguish between the 2 conditional formats in Lua
+  local paragraph_as_table = vim.api.nvim_buf_get_lines(0, paragraph_start - 1, paragraph_end, false)
+  local paragraph_as_string = table.concat(paragraph_as_table, "\n")
+  vim.fn.setreg("+", paragraph_as_string)
+  print("copied current paragraph to clipboard")
+end)
+--Fix: vim.keymap.set("n", "<Leader>yp", mmvap"+y'm:echo copied paragraph to clipboard"<CR>)
