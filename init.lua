@@ -137,18 +137,31 @@ vim.keymap.set("n", "<leader>ya", function()
   local buffer_as_string = table.concat(buffer_as_file, "\n")
   vim.fn.setreg("+", buffer_as_string) --copies buffer as string to clipboard
   local file_name = vim.fn.expand("%")
-  print("copied entire current file '" .. file_name .. "' to the clipboard")
+  print("copied entire current file '" .. file_name .. "' to clipboard")
 end)
 
-vim.keymap.set(
-  "n",
-  "<leader>yp",
-  'mmvap"+y`m:echo "copied paragraph to clipboard"<CR>'
-)
+vim.keymap.set("n", "<leader>yp", function()
+  vim.cmd([[normal! mmvap"+y'm]])
+  print("copied paragraph to clipboard")
+end)
 
 vim.keymap.set("n", "<leader>yw", function()
-  vim.cmd([[normal! yiW]])
+  vim.cmd([[normal! yiw]])
   local word = vim.fn.getreg("0")
   vim.fn.setreg("+", word)
   print("copied current word '" .. vim.fn.getreg("+") .. "' to clipboard")
+end)
+
+vim.keymap.set("n", "<leader>yW", function()
+  vim.cmd([[normal! yiw]])
+  local word = vim.fn.getreg("0")
+  vim.fn.setreg("+", word)
+  print("copied current WORD '" .. vim.fn.getreg("+") .. "' to clipboard")
+end)
+
+vim.keymap.set("n", "<leader>yy", function()
+  vim.cmd([[normal! Vy^]])
+  local line = vim.fn.getreg("0")
+  vim.fn.setreg("+", line)
+  print("copied current line to clipboard")
 end)
