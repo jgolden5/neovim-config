@@ -140,19 +140,15 @@ vim.keymap.set("n", "<leader>ya", function()
   print("copied entire current file '" .. file_name .. "' to the clipboard")
 end)
 
-vim.keymap.set("n", "<leader>yp", function()
-  local cursor = vim.fn.line(".")
-  local paragraph_start = vim.fn.search("^$", "bnW") --b = search backward from cursor position; n = don't move the cursor after the search; W = don't wrap around the file to search
-  if paragraph_start == 0 then --0 is returned by vim.fn.search if no search match was found
-    paragraph_start = 1
-  else
-    paragraph_start = paragraph_start + 1
-  end
-  local paragraph_end = vim.fn.search("^$", "nW")
-  paragraph_end = (paragraph_end == 0) and vim.fn.line("$") or (paragraph_end - 1) --note this is the same as paragraph_start's calculation, but I did it in ternary format for now for my personal reference to distinguish between the 2 conditional formats in Lua
-  local paragraph_as_table = vim.api.nvim_buf_get_lines(0, paragraph_start - 1, paragraph_end, false)
-  local paragraph_as_string = table.concat(paragraph_as_table, "\n")
-  vim.fn.setreg("+", paragraph_as_string)
-  print("copied current paragraph to clipboard")
+vim.keymap.set(
+  "n",
+  "<leader>yp",
+  'mmvap"+y`m:echo "copied paragraph to clipboard"<CR>'
+)
+
+vim.keymap.set("n", "<leader>yw", function()
+  vim.cmd([[normal! yiW]])
+  local word = vim.fn.getreg("0")
+  vim.fn.setreg("+", word)
+  print("copied current word '" .. vim.fn.getreg("+") .. "' to clipboard")
 end)
---Fix: vim.keymap.set("n", "<leader>yp", mmvap"+y'm:echo copied paragraph to clipboard"<CR>)
