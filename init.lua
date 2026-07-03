@@ -15,6 +15,16 @@ vim.opt.timeout = false --keys requiring additional keys will wait forever until
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 500
 
+--tab should ALWAYS be 2 spaces; quit trying to get wise, special filetypes (looking at you, /usr/share/nvim/runtime/ftplugin/*.vim)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.tabstop = 2
+  end,
+})
+
 vim.g.mapleader = " "
 
 vim.api.nvim_create_user_command("W", "write", {})
@@ -32,7 +42,7 @@ vim.keymap.set("n", "<leader>f", "<C-f>zz")
 vim.keymap.set("n", "<leader>b", "<C-b>Hzz")
 
 --filesystem manipulation
-vim.keymap.set("n", "<Leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wa<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
 vim.keymap.set("n", "<leader>X", ":xa<CR>")
@@ -45,12 +55,12 @@ vim.keymap.set("n", "<leader>E", ":wa<CR>:windo e ")
 vim.keymap.set("n", "<leader>s", ":split ")
 vim.keymap.set("n", "<leader>S", ":vsplit ")
 
-vim.keymap.set("n", "<leader>ve", ":w<CR>viwy:e <C-r>0<CR>:echo 'remember you can switch between files with Leader+o or Ctl+^'<CR>")
+vim.keymap.set("n", "<leader>ve", ":w<CR>viwy:e <C-r>0<CR>:echo 'remember you can switch between files with leader+o or Ctl+^'<CR>")
 vim.keymap.set("n", "<leader>vs", "viwy:split <C-r>0<CR>")
 vim.keymap.set("n", "<leader>vS", "viwy:vsplit <C-r>0<CR>")
 vim.keymap.set("n", "<leader>vt", "viwy:tabnew <C-r>0<CR>")
 
-vim.keymap.set("v", "<leader>ve", "<Esc>:w<CR>gvy:e <C-r>0<CR>:echo 'remember you can switch between files with Leader+o or Ctl+^'<CR>")
+vim.keymap.set("v", "<leader>ve", "<Esc>:w<CR>gvy:e <C-r>0<CR>:echo 'remember you can switch between files with leader+o or Ctl+^'<CR>")
 vim.keymap.set("v", "<leader>vs", "y:split <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vS", "y:vsplit <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vt", "y:tabnew <C-r>0<CR>")
@@ -84,45 +94,45 @@ vim.keymap.set("n", "<leader>=", "<C-w>=")
 vim.keymap.set("n", "<leader>o", ":w<CR><C-^>")
 
 --echo output keymaps
-vim.keymap.set("n", "<Leader>%", function()
+vim.keymap.set("n", "<leader>%", function()
   print(vim.fn.expand("%:p"))
 end)
 
 --tab navigation
-vim.keymap.set("n", "<Leader>tc", "<cmd>tabclose<CR>")
-vim.keymap.set("n", "<Leader>tx", "<cmd>tabclose<CR>")
-vim.keymap.set("n", "<Leader>te", ":tabnew ")
-vim.keymap.set("n", "<Leader>tE", "viWy:tabnew <C-r>0<CR>")
-vim.keymap.set("n", "<Leader>to", "<cmd>tabnew<CR>")
-vim.keymap.set("n", "<Leader>tO", ":tab split<CR>gT:x<CR>gt")
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>")
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>")
+vim.keymap.set("n", "<leader>te", ":tabnew ")
+vim.keymap.set("n", "<leader>tE", "viWy:tabnew <C-r>0<CR>")
+vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")
+vim.keymap.set("n", "<leader>tO", ":tab split<CR>gT:x<CR>gt")
 vim.keymap.set("n", "K", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "J", "<cmd>tabprevious<CR>")
-vim.keymap.set("n", "<Leader>t>", "<cmd>tabmove<CR>")
-vim.keymap.set("n", "<Leader>1", "<cmd>tabn 1<CR>")
-vim.keymap.set("n", "<Leader>2", "<cmd>tabn 2<CR>")
-vim.keymap.set("n", "<Leader>3", "<cmd>tabn 3<CR>")
-vim.keymap.set("n", "<Leader>4", "<cmd>tabn 4<CR>")
-vim.keymap.set("n", "<Leader>5", "<cmd>tabn 5<CR>")
-vim.keymap.set("n", "<Leader>6", "<cmd>tabn 6<CR>")
-vim.keymap.set("n", "<Leader>7", "<cmd>tabn 7<CR>")
-vim.keymap.set("n", "<Leader>8", "<cmd>tabn 8<CR>")
-vim.keymap.set("n", "<Leader>9", "<cmd>tabn 9<CR>")
-vim.keymap.set("n", "<Leader>0", "<cmd>tabn 10<CR>")
+vim.keymap.set("n", "<leader>t>", "<cmd>tabmove<CR>")
+vim.keymap.set("n", "<leader>1", "<cmd>tabn 1<CR>")
+vim.keymap.set("n", "<leader>2", "<cmd>tabn 2<CR>")
+vim.keymap.set("n", "<leader>3", "<cmd>tabn 3<CR>")
+vim.keymap.set("n", "<leader>4", "<cmd>tabn 4<CR>")
+vim.keymap.set("n", "<leader>5", "<cmd>tabn 5<CR>")
+vim.keymap.set("n", "<leader>6", "<cmd>tabn 6<CR>")
+vim.keymap.set("n", "<leader>7", "<cmd>tabn 7<CR>")
+vim.keymap.set("n", "<leader>8", "<cmd>tabn 8<CR>")
+vim.keymap.set("n", "<leader>9", "<cmd>tabn 9<CR>")
+vim.keymap.set("n", "<leader>0", "<cmd>tabn 10<CR>")
 
 --keymap settings
-vim.keymap.set("n", "<Leader>mh", ":set hlsearch<CR>")
-vim.keymap.set("n", "<Leader>mH", ":set nohlsearch<CR>")
-vim.keymap.set("n", "<Leader>mn", ":set number<CR>")
-vim.keymap.set("n", "<Leader>mN", ":set nonumber<CR>")
-vim.keymap.set("n", "<Leader>mr", ":set relativenumber<CR>")
-vim.keymap.set("n", "<Leader>mR", ":set norelativenumber<CR>")
-vim.keymap.set("n", "<Leader>mt", ":set textwidth=")
-vim.keymap.set("n", "<Leader>mT", ":set textwidth=0<CR>")
-vim.keymap.set("n", "<Leader>mw", ":set wrap<CR>")
-vim.keymap.set("n", "<Leader>mW", ":set nowrap<CR>")
+vim.keymap.set("n", "<leader>mh", ":set hlsearch<CR>")
+vim.keymap.set("n", "<leader>mH", ":set nohlsearch<CR>")
+vim.keymap.set("n", "<leader>mn", ":set number<CR>")
+vim.keymap.set("n", "<leader>mN", ":set nonumber<CR>")
+vim.keymap.set("n", "<leader>mr", ":set relativenumber<CR>")
+vim.keymap.set("n", "<leader>mR", ":set norelativenumber<CR>")
+vim.keymap.set("n", "<leader>mt", ":set textwidth=")
+vim.keymap.set("n", "<leader>mT", ":set textwidth=0<CR>")
+vim.keymap.set("n", "<leader>mw", ":set wrap<CR>")
+vim.keymap.set("n", "<leader>mW", ":set nowrap<CR>")
 
 --copy/paste/clipboard
-vim.keymap.set("n", "<Leader>ya", function()
+vim.keymap.set("n", "<leader>ya", function()
   local buffer_as_file = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local buffer_as_string = table.concat(buffer_as_file, "\n")
   vim.fn.setreg("+", buffer_as_string) --copies buffer as string to clipboard
@@ -130,7 +140,7 @@ vim.keymap.set("n", "<Leader>ya", function()
   print("copied entire current file '" .. file_name .. "' to the clipboard")
 end)
 
-vim.keymap.set("n", "<Leader>yp", function()
+vim.keymap.set("n", "<leader>yp", function()
   local cursor = vim.fn.line(".")
   local paragraph_start = vim.fn.search("^$", "bnW") --b = search backward from cursor position; n = don't move the cursor after the search; W = don't wrap around the file to search
   if paragraph_start == 0 then --0 is returned by vim.fn.search if no search match was found
@@ -145,4 +155,4 @@ vim.keymap.set("n", "<Leader>yp", function()
   vim.fn.setreg("+", paragraph_as_string)
   print("copied current paragraph to clipboard")
 end)
---Fix: vim.keymap.set("n", "<Leader>yp", mmvap"+y'm:echo copied paragraph to clipboard"<CR>)
+--Fix: vim.keymap.set("n", "<leader>yp", mmvap"+y'm:echo copied paragraph to clipboard"<CR>)
