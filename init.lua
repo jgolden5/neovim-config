@@ -27,6 +27,16 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.g.mapleader = " "
 
+--util functions
+local function move_cursor_left(n)
+  return vim.api.nvim_replace_termcodes(
+    string.rep("<Left>", n),
+    true,
+    false,
+    true
+  )
+end
+
 vim.api.nvim_create_user_command("W", "write", {})
 
 --disable Q since I never enter Ex mode
@@ -213,4 +223,11 @@ end)
 vim.keymap.set("v", "<leader>x", function()
   vim.cmd([[normal! "+d]])
   print("cut current selection to clipboard")
+end)
+
+--replacement
+vim.keymap.set("n", "<leader>R", function()
+  local current_word = vim.fn.expand("<cword>")
+  local move_left_thrice_term_codes = move_cursor_left(3)
+  vim.fn.feedkeys(":%s/" .. current_word .. "//gc" .. move_left_thrice_term_codes, "n") --n flag at the end tells neovim not to remap the keys
 end)
