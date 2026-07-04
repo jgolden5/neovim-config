@@ -14,6 +14,7 @@ vim.opt.background = 'dark'
 vim.opt.timeout = false --keys requiring additional keys will wait forever until a key combo triggers an event
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 500
+vim.opt.hlsearch = false
 
 --tab should ALWAYS be 2 spaces; quit trying to get wise, special filetypes (looking at you, /usr/share/nvim/runtime/ftplugin/*.vim)
 vim.api.nvim_create_autocmd("FileType", {
@@ -142,13 +143,15 @@ vim.keymap.set("n", "<leader>mw", ":set wrap<CR>")
 vim.keymap.set("n", "<leader>mW", ":set nowrap<CR>")
 
 --copy/paste/clipboard
-vim.keymap.set("n", "<leader>ya", function()
+local function copy_whole_file()
   local buffer_as_file = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local buffer_as_string = table.concat(buffer_as_file, "\n")
   vim.fn.setreg("+", buffer_as_string) --copies buffer as string to clipboard
   local file_name = vim.fn.expand("%")
   print("copied entire current file '" .. file_name .. "' to clipboard")
-end)
+end
+
+vim.keymap.set("n", "<leader>ya", copy_whole_file)
 
 vim.keymap.set("n", "<leader>yp", function()
   vim.cmd([[normal! mmvap"+y'm]])
@@ -163,7 +166,7 @@ vim.keymap.set("n", "<leader>yw", function()
 end)
 
 vim.keymap.set("n", "<leader>yW", function()
-  vim.cmd([[normal! yiw]])
+  vim.cmd([[normal! yiW]])
   local word = vim.fn.getreg("0")
   vim.fn.setreg("+", word)
   print("copied current WORD '" .. word .. "' to clipboard")
@@ -229,5 +232,25 @@ end)
 vim.keymap.set("n", "<leader>R", function()
   local current_word = vim.fn.expand("<cword>")
   local move_left_thrice_term_codes = move_cursor_left(3)
-  vim.fn.feedkeys(":%s/" .. current_word .. "//gc" .. move_left_thrice_term_codes, "n") --n flag at the end tells neovim not to remap the keys
+  vim.fn.feedkeys(":%s/" .. current_word .. "//gc" .. move_left_thrice_term_codes) --n flag at the end tells neovim not to remap the keys
+end)
+
+--open something from vim
+vim.keymap.set("n", "<leader>g", function()
+  vim.cmd([[normal! yiW]])
+  local search_query = vim.fn.getreg("0")
+  vim.fn.system(
+    "xdg-open 'https://google.com/search?q=" .. search_query .. "'"
+  )
+end)
+
+vim.keymap.set("n", "<leader>G", function() 
+  vim.fn.feedkeys(":!xdg-open 'https://www.google.com/search?q='" .. move_cursor_left(1))
+end)
+
+--language-specific keymaps
+--get markdownlivepreview of current file
+vim.keymap.set("n", "<leader>M", function()
+  copy_whole_file()
+  vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
 end)
