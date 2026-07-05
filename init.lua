@@ -266,3 +266,7 @@ vim.keymap.set("n", "<leader>M", function()
   copy_whole_file()
   vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
 end)
+
+--inline bash keymaps
+vim.keymap.set("n", "!@", ":%!")
+vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
