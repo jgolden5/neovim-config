@@ -270,3 +270,5 @@ end)
 --inline bash keymaps
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
+
+require("config.lazy")
