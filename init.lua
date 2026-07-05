@@ -38,7 +38,19 @@ local function move_cursor_left(n)
   )
 end
 
+local function flashCursor()
+  vim.opt.cursorline = true
+  vim.opt.cursorcolumn = true
+  vim.defer_fn(function()
+    vim.opt.cursorline = false
+    vim.opt.cursorcolumn = false
+  end, 500)
+end
+
 vim.api.nvim_create_user_command("W", "write", {})
+
+--flash cursor
+vim.keymap.set("n", "<leader><leader>", flashCursor)
 
 --disable Q since I never enter Ex mode
 vim.keymap.set("n", "Q", "<Nop>")
