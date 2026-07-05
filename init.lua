@@ -1,7 +1,14 @@
+--plugins
+require("config.lazy")
+
+--colorscheme/syntax
+--vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("tokyonight-night")
 vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschemes and configs usually enable this automatically, but I'll keep it until I understand how things work a little bit better
 vim.cmd("highlight CursorColumn ctermbg=white")
-
 vim.opt.fileencoding = 'utf-8'
+
+--setting options
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -270,5 +277,3 @@ end)
 --inline bash keymaps
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
-
-require("config.lazy")
