@@ -290,6 +290,8 @@ vim.keymap.set("n", '<leader>y"', function()
   print("copied text inside double quotes")
 end)
 
+vim.keymap.set("v", '<leader>y', "\"+y")
+
 vim.keymap.set("n", "<leader>p", function()
   vim.cmd([[normal! "+p]])
   print("pasted from clipboard")
