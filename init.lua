@@ -331,6 +331,14 @@ vim.keymap.set("n", "<leader>G", function()
   vim.fn.feedkeys(":!xdg-open 'https://www.google.com/search?q='" .. move_cursor_left(1))
 end)
 
+vim.keymap.set("v", "<leader>g", function()
+  vim.cmd([[normal! y]])
+  local search_query = vim.fn.getreg("0")
+  vim.fn.system(
+    "xdg-open 'https://google.com/search?q=" .. search_query .. "'"
+  )
+end)
+
 --language-specific keymaps
 --get markdownlivepreview of current file
 vim.keymap.set("n", "<leader>M", function()
