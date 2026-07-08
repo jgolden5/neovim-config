@@ -1,5 +1,6 @@
 --plugins
 require("config.lazy")
+require("config.colors")
 
 --lualine
 --minimal: require('lualine').setup()
