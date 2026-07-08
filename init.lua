@@ -81,6 +81,7 @@ vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 500
 vim.opt.hlsearch = false
 
+--tab stuff
 --tab should ALWAYS be 2 spaces; quit trying to get wise, special filetypes (looking at you, /usr/share/nvim/runtime/ftplugin/*.vim)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -92,6 +93,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.g.mapleader = " "
+
+vim.keymap.set("n", ">", ">>")
+vim.keymap.set("n", "<", "<<")
 
 --util functions
 local function move_cursor_left(n)
