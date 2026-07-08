@@ -22,7 +22,7 @@ return {
         require('telescope.builtin').find_files {
           cwd = "~/bd/stretch/stretch-work/"
         }
-      end)
+      end, { desc = "Fuzzy find files in stretch work directory" })
       vim.keymap.set("n", "<leader>fd", require('telescope.builtin').find_files, { desc = "Fuzzy find files in current working directory" })
       vim.keymap.set("n", "<leader>ff", function ()
         require('telescope.builtin').find_files {
@@ -35,6 +35,25 @@ return {
           cwd = '/mnt/c/Users/11045964/OneDrive - BD/Documents/Products'
         }
       end, { desc = "Fuzzy find files in windows/.../documents/.../products directory" })
+
+      vim.keymap.set("n", "<leader>gd", require('telescope.builtin').live_grep, { desc = "Live grep current working directory" })
+      vim.keymap.set("n", "<leader>gs", function()
+        require('telescope.builtin').live_grep {
+          cwd = "~/bd/stretch/stretch-work/"
+        }
+      end, { desc = "Live grep files in stretch work directory" })
+      vim.keymap.set("n", "<leader>gd", require('telescope.builtin').live_grep, { desc = "Live grep files in current working directory" })
+      vim.keymap.set("n", "<leader>gf", function ()
+        require('telescope.builtin').live_grep {
+          cwd = "~"
+        }
+      end, { desc = "Live grep files in home directory" })
+      vim.keymap.set("n", "<leader>gh", require('telescope.builtin').help_tags, { desc = "Live grep nvim help" })
+      vim.keymap.set("n", "<leader>gp", function ()
+        require('telescope.builtin').live_grep {
+          cwd = '/mnt/c/Users/11045964/OneDrive - BD/Documents/Products'
+        }
+      end, { desc = "Live grep files in windows/.../documents/.../products directory" })
     end
   }
 }
