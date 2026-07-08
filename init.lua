@@ -127,12 +127,6 @@ vim.keymap.set("n", "Q", "<Nop>")
 --generic movement helps
 vim.keymap.set("n", "<leader>i", "ggVG:s/  /  /g<CR>")
 
---page navigation
-vim.keymap.set("n", "<leader>d", "<C-d>zz")
-vim.keymap.set("n", "<leader>u", "<C-u>zz")
-vim.keymap.set("n", "<leader>f", "<C-f>zz")
-vim.keymap.set("n", "<leader>b", "<C-b>Hzz")
-
 --filesystem manipulation
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wa<CR>")
