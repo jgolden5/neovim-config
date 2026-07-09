@@ -152,16 +152,17 @@ vim.keymap.set("v", "<leader>vs", "y:split <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vS", "y:vsplit <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vt", "y:tabnew <C-r>0<CR>")
 
---fancy
+--filesystem
 local function rename_file()
   local old = vim.fn.expand("%:t")
+  local file_head = vim.fn.expand("%:h")
   local new = vim.fn.input("New name: ")
   if new == "" then
     vim.cmd("redraw")
     print("Rename cancelled")
     return
   end
-  vim.cmd("file " .. new)
+  vim.cmd("file " .. file_head .. "/" .. new)
   vim.cmd("write")
   vim.fn.delete(old)
 end 
