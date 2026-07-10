@@ -49,6 +49,19 @@ return {
         }
       end, { desc = "Fuzzy find files in windows/.../documents/.../products directory" })
 
+      vim.keymap.set("n", "<leader>ga", function()
+        require('telescope.builtin').live_grep ({
+          search_dirs = {
+            "~/bd/stretch/2/",
+            "~/bd/stretch/stretch-work/alaris/",
+          },
+        })
+      end, { desc = "Live grep files in alaris WSL directories" })
+      vim.keymap.set("n", "<leader>gA", function()
+        require('telescope.builtin').live_grep {
+          cwd = "/mnt/c/wsl/alaris-repos/"
+        }
+      end, { desc = "Live grep files in alaris Windows directory" })
       vim.keymap.set("n", "<leader>gd", require('telescope.builtin').live_grep, { desc = "Live grep current working directory" })
       vim.keymap.set("n", "<leader>gs", function()
         require('telescope.builtin').live_grep {
