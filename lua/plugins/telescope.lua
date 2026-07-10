@@ -18,6 +18,19 @@ return {
           fzf = {}
         }
       }
+      vim.keymap.set("n", "<leader>fa", function()
+        require('telescope.builtin').find_files ({
+          search_dirs = {
+            "~/bd/stretch/2/",
+            "~/bd/stretch/stretch-work/alaris/",
+          },
+        })
+      end, { desc = "Fuzzy find files in alaris WSL directories" })
+      vim.keymap.set("n", "<leader>fA", function()
+        require('telescope.builtin').find_files {
+          cwd = "/mnt/c/wsl/alaris-repos/"
+        }
+      end, { desc = "Fuzzy find files in alaris Windows directory" })
       vim.keymap.set("n", "<leader>fs", function()
         require('telescope.builtin').find_files {
           cwd = "~/bd/stretch/stretch-work/"
