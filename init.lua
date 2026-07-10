@@ -65,7 +65,6 @@ vim.cmd.colorscheme("catppuccin-nvim")
 --vim.cmd.colorscheme("tokyonight-night")
 vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschemes and configs usually enable this automatically, but I'll keep it until I understand how things work a little bit better
 vim.cmd("highlight CursorColumn ctermbg=white")
-vim.opt.fileencoding = 'utf-8'
 
 --setting options
 vim.opt.tabstop = 2
