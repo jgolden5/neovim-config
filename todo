@@ -1,2 +1,0 @@
-transfer everything from vimrc to init.lua (if there's anything unique in there. Also, make sure I'm using macOS so I can actually test this)
-download telescope and play with it to see what it does exactly that makes neovim so much better than vim
