@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.g.mapleader = " "
-vim.g.harpoonmode = false --this one I made up for leader+num custom navigation behavior
+vim.g.harpoonmode = true --this one I made up for leader+num custom navigation behavior
 
 vim.keymap.set("n", ">", ">>")
 vim.keymap.set("n", "<", "<<")
