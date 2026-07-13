@@ -1,4 +1,4 @@
---plugins
+--Plugins
 require("config.lazy")
 require("config.colors")
 
@@ -137,7 +137,6 @@ vim.keymap.set("n", "<leader>Q", "ZQ")
 
 --filesystem with fill-in-the-blank functionality
 vim.keymap.set("n", "<leader>e", ":e ")
-vim.keymap.set("n", "<leader>E", ":wa<CR>:windo e ")
 vim.keymap.set("n", "<leader>s", ":split ")
 vim.keymap.set("n", "<leader>S", ":vsplit ")
 
@@ -165,7 +164,6 @@ local function rename_file()
   vim.cmd("write")
   vim.fn.delete(old)
 end 
-vim.keymap.set("n", "<leader>n", rename_file)
 
 --window/pane navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h")
