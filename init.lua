@@ -151,21 +151,6 @@ vim.keymap.set("v", "<leader>vs", "y:split <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vS", "y:vsplit <C-r>0<CR>")
 vim.keymap.set("v", "<leader>vt", "y:tabnew <C-r>0<CR>")
 
---filesystem
-local function rename_file()
-  local old = vim.fn.expand("%:t")
-  local file_head = vim.fn.expand("%:h")
-  local new = vim.fn.input("New name: ")
-  if new == "" then
-    vim.cmd("redraw")
-    print("Rename cancelled")
-    return
-  end
-  vim.cmd("file " .. file_head .. "/" .. new)
-  vim.cmd("write")
-  vim.fn.delete(old)
-end 
-
 --window/pane navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
@@ -425,7 +410,7 @@ vim.keymap.set("n", "<leader>R", function()
 end)
 
 --open something from vim
-vim.keymap.set("n", "<leader>G", function() 
+vim.keymap.set("n", "<leader>G", function()
   vim.fn.feedkeys(":!xdg-open 'https://www.google.com/search?q='" .. move_cursor_left(1))
 end)
 
