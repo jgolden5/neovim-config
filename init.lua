@@ -444,6 +444,11 @@ vim.keymap.set("n", "<leader>M", function()
   vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
 end)
 
+--enter case-insensitive search
+vim.keymap.set("n", "<leader>/", function()
+  vim.fn.feedkeys("/\\c" .. move_cursor_left(2))
+end)
+
 --inline bash keymaps
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
