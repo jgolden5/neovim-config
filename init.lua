@@ -93,6 +93,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.g.mapleader = " "
+vim.g.harpoonmode = false --this one I made up for leader+num custom navigation behavior
 
 vim.keymap.set("n", ">", ">>")
 vim.keymap.set("n", "<", "<<")
@@ -193,18 +194,130 @@ vim.keymap.set("n", "<leader>tO", ":tab split<CR>gT:x<CR>gt")
 vim.keymap.set("n", "K", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "J", "<cmd>tabprevious<CR>")
 vim.keymap.set("n", "<leader>t>", "<cmd>tabmove<CR>")
-vim.keymap.set("n", "<leader>1", "<cmd>tabn 1<CR>")
-vim.keymap.set("n", "<leader>2", "<cmd>tabn 2<CR>")
-vim.keymap.set("n", "<leader>3", "<cmd>tabn 3<CR>")
-vim.keymap.set("n", "<leader>4", "<cmd>tabn 4<CR>")
-vim.keymap.set("n", "<leader>5", "<cmd>tabn 5<CR>")
-vim.keymap.set("n", "<leader>6", "<cmd>tabn 6<CR>")
-vim.keymap.set("n", "<leader>7", "<cmd>tabn 7<CR>")
-vim.keymap.set("n", "<leader>8", "<cmd>tabn 8<CR>")
-vim.keymap.set("n", "<leader>9", "<cmd>tabn 9<CR>")
-vim.keymap.set("n", "<leader>0", "<cmd>tabn 10<CR>")
+
+--tab/harpoon navigation
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>1", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 1")
+    harpoon:list():select(1)
+  else
+    print("Select tab 1")
+    if 1 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 1")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>2", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 2")
+    harpoon:list():select(2)
+  else
+    print("Select tab 2")
+    if 2 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 2")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>3", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 3")
+    harpoon:list():select(3)
+  else
+    print("Select tab 3")
+    if 3 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 3")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>4", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 4")
+    harpoon:list():select(4)
+  else
+    print("Select tab 4")
+    if 4 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 4")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>5", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 5")
+    harpoon:list():select(5)
+  else
+    print("Select tab 5")
+    if 5 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 5")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>6", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 6")
+    harpoon:list():select(6)
+  else
+    print("Select tab 6")
+    if 6 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 6")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>7", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 7")
+    harpoon:list():select(7)
+  else
+    print("Select tab 7")
+    if 7 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 7")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>8", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 8")
+    harpoon:list():select(8)
+  else
+    print("Select tab 8")
+    if 8 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 8")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>9", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 9")
+    harpoon:list():select(9)
+  else
+    print("Select tab 9")
+    if 9 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 9")
+    end
+  end
+end)
+vim.keymap.set("n", "<leader>0", function()
+  if vim.g.harpoonmode == true then
+    print("Select harpoon file 10")
+    harpoon:list():select(10)
+  else
+    print("Select tab 10")
+    if 10 <= vim.fn.tabpagenr("$") then
+      vim.cmd("tabn 10")
+    end
+  end
+end)
 
 --keymap settings
+vim.keymap.set("n", "<leader>ma", function()
+  if vim.g.harpoonmode == true then
+    vim.g.harpoonmode = false
+    print("harpoonmode = false")
+  else
+    vim.g.harpoonmode = true
+    print("harpoonmode = true")
+  end
+end)
 vim.keymap.set("n", "<leader>mh", ":set hlsearch<CR>")
 vim.keymap.set("n", "<leader>mH", ":set nohlsearch<CR>")
 vim.keymap.set("n", "<leader>mn", ":set number<CR>")
