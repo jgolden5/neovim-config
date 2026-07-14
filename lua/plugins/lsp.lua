@@ -15,6 +15,9 @@ return {
         },
       })
       vim.lsp.enable("lua_ls")
+      vim.lsp.config("marksman", {})
+      vim.lsp.enable("marksman")
+      --lua keymaps
       vim.keymap.set("n", "<leader>de", function()
         vim.diagnostic.open_float(0, {
           severity = vim.diagnostic.severity.ERROR
@@ -65,6 +68,8 @@ return {
       end, {
         desc = "Show all diagnostics in file",
       })
+      --md keymaps
+      vim.keymap.set("n", "<leader>D", ":Telescope lsp_document_symbols<CR>", opts)
     end,
   },
 }
