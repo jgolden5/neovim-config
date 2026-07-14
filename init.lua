@@ -385,6 +385,13 @@ vim.keymap.set("n", '<leader>y"', function()
   print("copied text inside double quotes")
 end)
 
+vim.keymap.set("n", '<leader>y`', function()
+  vim.cmd([[normal! yi`]])
+  local text_in_double_quotes = vim.fn.getreg("0")
+  vim.fn.setreg("+", text_in_double_quotes)
+  print("copied text inside backticks")
+end)
+
 vim.keymap.set("v", '<leader>y', "\"+y")
 
 vim.keymap.set("n", "<leader>p", function()
