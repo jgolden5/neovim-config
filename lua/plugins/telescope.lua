@@ -37,6 +37,14 @@ return {
         }
       end, { desc = "Fuzzy find files in stretch work directory" })
       vim.keymap.set("n", "<leader>fd", require('telescope.builtin').find_files, { desc = "Fuzzy find files in current working directory" })
+      vim.keymap.set("n", "<leader>fr", function()
+        require('telescope.builtin').find_files ({
+          search_dirs = {
+            "~/bd/stretch/1/",
+            "~/bd/stretch/stretch-work/ilearn/",
+          },
+        })
+      end, { desc = "Fuzzy find files in iLearn directories" })
       vim.keymap.set("n", "<leader>ff", function ()
         require('telescope.builtin').find_files {
           cwd = "~"
@@ -63,6 +71,14 @@ return {
         }
       end, { desc = "Live grep files in alaris Windows directory" })
       vim.keymap.set("n", "<leader>gd", require('telescope.builtin').live_grep, { desc = "Live grep current working directory" })
+      vim.keymap.set("n", "<leader>gr", function()
+        require('telescope.builtin').live_grep ({
+          search_dirs = {
+            "~/bd/stretch/1/",
+            "~/bd/stretch/stretch-work/ilearn/",
+          },
+        })
+      end, { desc = "Live grep files in iLearn directories" })
       vim.keymap.set("n", "<leader>gs", function()
         require('telescope.builtin').live_grep {
           cwd = "~/bd/stretch/stretch-work/"
