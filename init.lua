@@ -408,12 +408,6 @@ vim.keymap.set("v", "<leader>g", function()
   )
 end)
 
---language-specific keymaps
---get markdownlivepreview of current file
-vim.keymap.set("n", "<leader>M", function()
-  copy_whole_file()
-  vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
-end)
 
 --enter case-insensitive search
 vim.keymap.set("n", "<leader>/", function()
@@ -423,3 +417,10 @@ end)
 --inline bash keymaps
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
+
+--language-specific keymaps
+--get markdownlivepreview of current file
+vim.keymap.set("n", "<leader>M", function()
+  copy_whole_file()
+  vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
+end)
