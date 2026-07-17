@@ -12,7 +12,7 @@ return {
       auto_insert_mode = true,     -- Enter insert mode when opening
       window = {
         layout = 'vertical',       -- 'vertical', 'horizontal', 'float'
-        width = 0.5,              -- 50% of screen width
+        width = 0.3,              -- {n * 10}% of screen width
         height = 20, -- Fixed height in rows
         border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
         title = '🤖 AI Assistant',
@@ -31,5 +31,6 @@ return {
       separator = '━━',
       auto_fold = true,
     },
+    vim.keymap.set("n", "<leader>c", ":CopilotChat<CR>")
   },
 }

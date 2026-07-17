@@ -164,6 +164,11 @@ vim.keymap.set("n", "<leader>r", "<C-w>r")
 vim.keymap.set("n", "<leader>=", "<C-w>=")
 vim.keymap.set("n", "<leader>o", ":w<CR><C-^>")
 
+vim.keymap.set("v", "<leader>h", "<Esc><C-w>h")
+vim.keymap.set("v", "<leader>j", "<Esc><C-w>j")
+vim.keymap.set("v", "<leader>k", "<Esc><C-w>k")
+vim.keymap.set("v", "<leader>l", "<Esc><C-w>l")
+
 --echo output keymaps
 vim.keymap.set("n", "<leader>%", function()
   print(vim.fn.expand("%:p"))

@@ -9,7 +9,7 @@ return {
       require("oil").setup {
         columns = {
           { "icon", add_padding = false },
-        },        
+        },
           view_options = {
           show_hidden = true,
         },
