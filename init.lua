@@ -413,7 +413,6 @@ vim.keymap.set("v", "<leader>g", function()
   )
 end)
 
-
 --enter case-insensitive search
 vim.keymap.set("n", "<leader>/", function()
   vim.fn.feedkeys("/\\c" .. move_cursor_left(2))
@@ -422,6 +421,20 @@ end)
 --inline bash keymaps
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
+
+--priorities and to-do list work
+vim.keymap.set("n", "<leader>T", function()
+  local filename = vim.fn.expand("%:t")
+  local title = filename
+    :gsub("^%u+%-", "") -- remove CRIT-, HIGH-, MED-, LOW-
+    :gsub("%.md$", "")    -- remove extension
+    :gsub("%-", " ")      -- hyphens -> spaces
+  title = title:gsub("(%a)([%w_]*)", function(first, rest)
+    return first:upper() .. rest:lower()
+  end)
+  vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# " .. title })
+  vim.cmd("startinsert")
+end, { desc = "Insert todo task based on title" })
 
 --language-specific keymaps
 --get markdownlivepreview of current file
