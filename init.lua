@@ -367,6 +367,9 @@ end)
 vim.keymap.set("n", "!@", ":%!")
 vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
 
+--lazy.nvim
+vim.keymap.set("n", "<leader>Z", ":Lazy<CR>")
+
 --priorities and to-do list work
 vim.keymap.set("n", "<leader>T", function()
   local filename = vim.fn.expand("%:t")
