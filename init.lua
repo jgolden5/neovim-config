@@ -62,6 +62,22 @@ local function flashCursor()
   end, 500)
 end
 
+local function follow_link(link)
+  link = link:gsub("^.*%(+", ""):gsub("%)+.*$", "")
+  print(link)
+  if link:match("^http") then
+    vim.fn.system(
+      "xdg-open '" .. link .. "'"
+    )
+  elseif vim.uv.fs_stat(link) then
+    vim.cmd("edit " .. link)
+  else
+    vim.fn.system(
+      "xdg-open 'https://google.com/search?q=" .. link .. "'"
+    )
+  end
+end
+
 vim.api.nvim_create_user_command("W", "write", {})
 
 --flash cursor
@@ -350,12 +366,16 @@ vim.keymap.set("n", "<leader>G", function()
   vim.fn.feedkeys(":!xdg-open 'https://www.google.com/search?q='" .. move_cursor_left(1))
 end)
 
-vim.keymap.set("v", "<leader>g", function()
+vim.keymap.set("n", "<leader>O", function()
+  vim.cmd([[normal! yiW]])
+  local link = vim.fn.getreg("0")
+  follow_link(link)
+end)
+
+vim.keymap.set("v", "<leader>O", function()
   vim.cmd([[normal! y]])
-  local search_query = vim.fn.getreg("0")
-  vim.fn.system(
-    "xdg-open 'https://google.com/search?q=" .. search_query .. "'"
-  )
+  local link = vim.fn.getreg("0")
+  follow_link(link)
 end)
 
 --enter case-insensitive search
