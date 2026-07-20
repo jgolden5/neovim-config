@@ -394,7 +394,7 @@ vim.keymap.set("n", "<leader>Z", ":Lazy<CR>")
 vim.keymap.set("n", "<leader>T", function()
   local filename = vim.fn.expand("%:t")
   local title = filename
-    :gsub("^%u+%-", "") -- remove CRIT-, HIGH-, MED-, LOW-
+    :gsub("^%d*%-", "") -- remove CRIT-, HIGH-, MED-, LOW-
     :gsub("%.md$", "")    -- remove extension
     :gsub("%-", " ")      -- hyphens -> spaces
   title = title:gsub("(%a)([%w_]*)", function(first, rest)
