@@ -17,7 +17,8 @@ vim.opt.shiftwidth = 2
 vim.opt.matchpairs:append("<:>")
 vim.opt.expandtab = true
 vim.opt.showcmd = true
-vim.opt.number = true
+--vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.wildmenu = true
 vim.opt.background = 'dark'
 vim.opt.timeout = false --keys requiring additional keys will wait forever until a key combo triggers an event
@@ -37,7 +38,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.g.mapleader = " "
-vim.g.relativenumber = true
 vim.g.harpoonmode = true --this one I made up for leader+num custom navigation behavior
 
 vim.keymap.set("n", ">", ">>")
