@@ -2,21 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      vim.lsp.config("lua_ls", {
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
-      vim.lsp.enable("lua_ls")
-      vim.lsp.config("marksman", {})
-      vim.lsp.enable("marksman")
       --lua keymaps
       vim.keymap.set("n", "<leader>de", function()
         vim.diagnostic.open_float(0, {

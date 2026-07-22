@@ -130,9 +130,26 @@ vim.keymap.set("v", "<leader>j", "<Esc><C-w>j")
 vim.keymap.set("v", "<leader>k", "<Esc><C-w>k")
 vim.keymap.set("v", "<leader>l", "<Esc><C-w>l")
 
---echo output keymaps
-vim.keymap.set("n", "<leader>%", function()
+--file keymaps
+vim.keymap.set("n", "<leader>%%", function()
   print(vim.fn.expand("%:p"))
+end)
+
+--note: this keymap is identical to "<leader>y%"
+vim.keymap.set("n", "<leader>%y", function()
+  local absolute_path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", absolute_path)
+  print("copied " .. absolute_path)
+end)
+
+vim.keymap.set("n", "<leader>%h", function()
+  if vim.bo.filetype == "html" then
+    local absolute_path = vim.fn.expand("%:p")
+    vim.fn.jobstart({ "xdg-open", absolute_path }, { detach = true })
+    print("opened '" .. absolute_path .. "' file in browser")
+  else
+    print("refused to open non-html file in browser")
+  end
 end)
 
 --tab navigation
