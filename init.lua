@@ -83,10 +83,6 @@ vim.api.nvim_create_user_command("W", "write", {})
 --flash cursor
 vim.keymap.set("n", "<leader><leader>", flashCursor)
 
---enter visual block mode (<C-q> also works). 
---Note: I removed <leader>Q hotkey for ZQ because I don't want to accidentally mistake this command for that one
-vim.keymap.set("n", "Q", "<C-q>")
-
 --generic movement helps
 vim.keymap.set("n", "<leader>i", "ggVG:s/  /  /g<CR>")
 
@@ -96,6 +92,7 @@ vim.keymap.set("n", "<leader>W", ":wa<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
 vim.keymap.set("n", "<leader>X", ":xa<CR>")
 vim.keymap.set("n", "ZA", ":xa<CR>")
+vim.keymap.set("n", "<leader>Q", "ZQ")
 
 --filesystem with fill-in-the-blank functionality
 vim.keymap.set("n", "<leader>e", ":e ")
