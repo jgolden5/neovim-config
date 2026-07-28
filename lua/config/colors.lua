@@ -14,14 +14,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.cmd([[
       syntax clear
       syntax keyword alarisCode ALARIS
-      syntax keyword ilearnCode ILEARN
       syntax keyword nvimCode NVIM
       syntax keyword CQ40Code CQ40
+      syntax keyword planCode PLAN
 
       highlight default alarisCode guifg=#ff0000 ctermfg=Red
-      highlight default ilearnCode guifg=#00ff00 ctermfg=Green
       highlight default nvimCode guifg=#00ffff ctermfg=Cyan
       highlight default CQ40Code guifg=#008080 ctermfg=6
+      highlight default planCode guifg=#9010F0 ctermfg=DarkMagenta
     ]])
 
     vim.cmd("highlight! link redCode redCode")
