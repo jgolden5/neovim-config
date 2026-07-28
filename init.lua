@@ -418,7 +418,13 @@ vim.keymap.set("n", "<leader>T", function()
     return first:upper() .. rest:lower()
   end)
   vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# " .. title })
+  vim.api.nvim_buf_set_lines(0, 1, 1, false, { "## C: " })
+  vim.api.nvim_buf_set_lines(0, 2, 2, false, { "## A:" })
+  vim.api.nvim_buf_set_lines(0, 3, 3, false, { "## (R):" })
+  vim.api.nvim_buf_set_lines(0, 4, 4, false, { "## R:" })
+  vim.api.nvim_buf_set_lines(0, 5, 5, false, { "## L:" })
   vim.cmd("startinsert")
+  vim.api.nvim_win_set_cursor(0, {2, 6})
 end, { desc = "Insert todo task based on title" })
 
 --language-specific keymaps
