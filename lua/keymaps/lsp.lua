@@ -1,3 +1,14 @@
+--basic lsp functionality
+vim.keymap.set("n", "<leader>bd", function() vim.lsp.buf.definition() end, opts)
+vim.keymap.set("n", "<leader>bh", function() vim.lsp.buf.hover() end, opts)
+vim.keymap.set("n", "<leader>bi", function() vim.lsp.buf.incoming_calls() end, opts)
+vim.keymap.set("n", "<leader>bj", function() vim.lsp.buf.document_symbol() end, opts)
+vim.keymap.set("n", "<leader>bJ", function() vim.lsp.buf.workspace_symbol() end, opts)
+
+--diagnostics
+vim.keymap.set("n", "<leader>dd", function()
+  vim.diagnostic.open_float()
+end, { desc = "open diagnostic on current line, regardless of diagnostic type" })
 vim.keymap.set("n", "<leader>de", function()
   vim.diagnostic.open_float(0, {
     severity = vim.diagnostic.severity.ERROR
@@ -45,8 +56,7 @@ vim.keymap.set("n", "<leader>da", function()
     "text",
     { border = "rounded" }
   )
-end, {
-desc = "Show all diagnostics in file",
-    })
-    --md keymaps
-    vim.keymap.set("n", "<leader>D", ":Telescope lsp_document_symbols<CR>", opts)
+end, { desc = "Show all diagnostics in file", })
+
+--md keymaps
+vim.keymap.set("n", "<leader>D", ":Telescope lsp_document_symbols<CR>", opts)
