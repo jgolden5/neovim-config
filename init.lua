@@ -1,6 +1,7 @@
 --Plugins
 require("config.lazy")
 require("config.colors")
+require("keymaps.lsp")
 --require("config.evil_lualine")
 require("config.main_lualine")
 
