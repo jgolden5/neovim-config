@@ -1,9 +1,12 @@
 --Plugins
 require("config.lazy")
 require("config.colors")
-require("keymaps.lsp")
+require("config.diagnostics")
 --require("config.evil_lualine")
 require("config.main_lualine")
+
+--keymaps
+require("keymaps.lsp")
 
 --colorscheme/syntax
 vim.cmd.colorscheme("catppuccin-nvim")

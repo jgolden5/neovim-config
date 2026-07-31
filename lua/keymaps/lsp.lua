@@ -1,6 +1,7 @@
 --basic lsp functionality
-vim.keymap.set("n", "<leader>bd", function() vim.lsp.buf.definition() end, opts)
-vim.keymap.set("n", "<leader>bh", function() vim.lsp.buf.hover() end, opts)
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+vim.keymap.set("n", "gh", function() vim.lsp.buf.hover() end, opts)
+vim.keymap.set("n", "gR", require("telescope.builtin").lsp_references)
 vim.keymap.set("n", "<leader>bi", function() vim.lsp.buf.incoming_calls() end, opts)
 vim.keymap.set("n", "<leader>bj", function() vim.lsp.buf.document_symbol() end, opts)
 vim.keymap.set("n", "<leader>bJ", function() vim.lsp.buf.workspace_symbol() end, opts)

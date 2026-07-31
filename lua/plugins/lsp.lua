@@ -21,6 +21,12 @@ return {
     })
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "text", "plaintext" },
+      callback = function()
+        require("cmd").setup.buffer({ enabled = false })
+      end,
+    })
     local capabilities = vim.tbl_deep_extend(
       "force",
       {},
