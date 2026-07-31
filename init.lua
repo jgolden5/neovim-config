@@ -2,6 +2,7 @@
 require("config.lazy")
 require("config.colors")
 require("config.diagnostics")
+require("config.mermaid")
 --require("config.evil_lualine")
 require("config.main_lualine")
 
@@ -86,9 +87,6 @@ vim.api.nvim_create_user_command("W", "write", {})
 
 --flash cursor
 vim.keymap.set("n", "<leader><leader>", flashCursor)
-
---generic movement helps
-vim.keymap.set("n", "<leader>i", "ggVG:s/  /  /g<CR>")
 
 --filesystem manipulation
 vim.keymap.set("n", "<leader>w", ":w<CR>")
