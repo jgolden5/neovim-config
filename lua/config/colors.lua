@@ -13,17 +13,21 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
     vim.cmd([[
       syntax clear
-      syntax keyword planCode PLAN
-      syntax keyword alarisCode ALARIS
-      syntax keyword nvimCode NVIM
       syntax keyword CQ40Code CQ40
       syntax keyword SeekerCode SEEKER
+      syntax keyword alarisCode ALARIS
+      syntax keyword nvimCode NVIM
+      syntax keyword planCode PLAN
+      syntax keyword tutorCode TUTOR
+      syntax keyword jobsearchCode JOBSEARCH
 
       highlight default planCode guifg=#9010F0 ctermfg=DarkMagenta
       highlight default alarisCode guifg=#ff0000 ctermfg=Red
       highlight default nvimCode guifg=#00aa00 ctermfg=DarkGreen
       highlight default CQ40Code guifg=#008080 ctermfg=6
       highlight default SeekerCode guifg=#00ffff ctermfg=Cyan
+      highlight default tutorCode guifg=#ffff00 ctermfg=Yellow
+      highlight default jobsearchCode guifg=#ffaa00 ctermfg=208
     ]])
 
     vim.cmd("highlight! link redCode redCode")
