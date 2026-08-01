@@ -158,8 +158,8 @@ vim.keymap.set("n", "<leader>te", ":tabnew ")
 vim.keymap.set("n", "<leader>tE", "viWy:tabnew <C-r>0<CR>")
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>tO", ":tab split<CR>gT:x<CR>gt")
---vim.keymap.set("n", "K", "<cmd>tabnext<CR>")
---vim.keymap.set("n", "J", "<cmd>tabprevious<CR>")
+vim.keymap.set("n", "K", "<cmd>tabnext<CR>")
+vim.keymap.set("n", "J", "<cmd>tabprevious<CR>")
 vim.keymap.set("n", "<leader>t>", "<cmd>tabmove<CR>")
 
 --tab/harpoon navigation
