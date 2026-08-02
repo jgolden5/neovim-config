@@ -51,7 +51,7 @@ vim.keymap.set("n", "<", "<<")
 --util functions
 local function move_cursor_left(n)
   return vim.api.nvim_replace_termcodes(
-    string.rep("<Left>", n),
+  string.rep("<Left>", n),
     true,
     false,
     true
