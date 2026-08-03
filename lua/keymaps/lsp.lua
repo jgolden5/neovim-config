@@ -52,11 +52,6 @@ vim.keymap.set("n", "<leader>da", function()
     )
   end
 
-  vim.lsp.util.open_floating_preview(
-    lines,
-    "text",
-    { border = "rounded" }
-  )
 end, { desc = "Show all diagnostics in file", })
 
 --md keymaps
