@@ -1,7 +1,6 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "mermaid", },
   callback = function()
-    print("autocmd fired")
     vim.keymap.set("n", "<leader>mmp", ":MermaidPreview<CR>")
     vim.keymap.set("n", "<leader>mmf", ":MermaidFormat<CR>")
     vim.keymap.set("n", "<leader>mmr", ":MermaidRender<CR>")
