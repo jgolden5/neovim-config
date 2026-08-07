@@ -407,24 +407,24 @@ vim.keymap.set("n", "!#", "ggO#!/bin/bash<esc>j0")
 vim.keymap.set("n", "<leader>Z", ":Lazy<CR>")
 
 --priorities and to-do list work
-vim.keymap.set("n", "<leader>T", function()
-  local filename = vim.fn.expand("%:t")
-  local title = filename
-    :gsub("^%d*%-", "") -- remove CRIT-, HIGH-, MED-, LOW-
-    :gsub("%.md$", "")    -- remove extension
-    :gsub("%-", " ")      -- hyphens -> spaces
-  title = title:gsub("(%a)([%w_]*)", function(first, rest)
-    return first:upper() .. rest:lower()
-  end)
-  vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# " .. title })
-  vim.api.nvim_buf_set_lines(0, 1, 1, false, { "* #### C: " })
-  vim.api.nvim_buf_set_lines(0, 2, 2, false, { "* #### A:" })
-  vim.api.nvim_buf_set_lines(0, 3, 3, false, { "* #### (R):" })
-  vim.api.nvim_buf_set_lines(0, 4, 4, false, { "* #### R:" })
-  vim.api.nvim_buf_set_lines(0, 5, 5, false, { "* #### L:" })
-  vim.cmd("startinsert")
-  vim.api.nvim_win_set_cursor(0, {2, 11})
-end, { desc = "Insert todo task based on title" })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.keymap.set("n", "<leader>T", function()
+      local filename = vim.fn.expand("%:t")
+      local title = filename
+        :gsub("%_", " ")
+        :gsub("%.md$", "")
+        :gsub("%S+", function(word)
+          return word:sub(1, 1):upper() .. word:sub(2):lower()
+        end)
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, {
+          "# " .. title,
+        })
+        vim.cmd("startinsert")
+    end, { desc = "Convert .md file to heading for said .md file" })
+  end
+})
 
 --language-specific keymaps
 --get markdownlivepreview of current file
