@@ -17,7 +17,7 @@ return {
       end, { desc = "Add current file to harpoon file list" } )
 
       --toggle menu
-      vim.keymap.set("n", "<leader>A", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "+", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
     end
   },
