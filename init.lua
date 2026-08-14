@@ -432,3 +432,7 @@ vim.keymap.set("n", "<leader>M", function()
   copy_whole_file()
   vim.fn.system('xdg-open "https://markdownlivepreview.com/"')
 end)
+
+--insert mode
+--for some reason, Ctrl+h is also the same as Ctrl+Backspace, so this works as a platform-independent way to backspace a word at a time in insert mode:
+vim.keymap.set("i", "<C-h>", "<C-w>")
