@@ -34,6 +34,7 @@ return {
         ensure_installed = {
           "lua_ls",
           "pyright",
+          "clangd",
           --"rust_analyzer",
           --"gopls",
           --"vtsls",
@@ -82,6 +83,10 @@ return {
               capabilities = capabilities,
               filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "heex" },
             })
+          end,
+          ["clangd"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.clangd.setup({})
           end,
         }
       })

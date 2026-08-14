@@ -31,6 +31,6 @@ return {
       separator = '━━',
       auto_fold = true,
     },
-    vim.keymap.set("n", "<leader>c", ":CopilotChat<CR>")
+    vim.keymap.set("n", "<leader>C", ":CopilotChat<CR>")
   },
 }
