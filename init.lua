@@ -48,6 +48,52 @@ vim.g.harpoonmode = true --this one I made up for leader+num custom navigation b
 vim.keymap.set("n", ">", ">>")
 vim.keymap.set("n", "<", "<<")
 
+--sessions
+vim.api.nvim_create_user_command("SaveSession", function()
+  vim.cmd("wa")
+  local session_name = vim.fn.input("What would you like to name session before saving? ")
+  if session_name == "" then
+    print("Session save cancelled")
+    return
+  end
+  local session_dir = "~/.config/nvim/sessions"
+  local session_file = session_dir .. "/" .. session_name .. ".vim"
+  vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
+  print("Session saved in file \"" .. session_file .. "\"")
+end, {})
+
+--[[
+vim.api.nvim_create_user_command("LoadSession", function()
+  local session_dir = "~/.config/nvim/sessions"
+  local sessions = vim.fn.glob(session_dir .. "/*.vim", false, true)
+  if #sessions == 0 then
+    print("No sessions found")
+    return
+  end
+  print("Sessions:")
+  for _, path in ipairs(sessions) do
+    local name = vim.fn.fnamemodify(path, ":t:r")
+    print("  - " .. name)
+  end
+  local session_name = vim.fn.input("Session to load: ")
+  if session_name == "" then
+    print("Session load cancelled")
+  end
+  local session_file = session_dir .. "/" .. session_name .. ".vim"
+  print("Session file = \"" .. session_file .. "\"")
+  if vim.fn.filereadable(vim.fn.expand(session_file)) == 1 then
+    print()
+    print("session not found: " .. session_name)
+    return
+  end
+  vim.cmd("source " .. vim.fn.fnameescape(session_file))
+  print("Loaded session: " .. session_name)
+end, {})
+--]]
+
+vim.keymap.set("n", "<leader>qw", ":SaveSession<CR>")
+vim.keymap.set("n", "<leader>qe", ":LoadSession<CR>")
+
 --util functions
 local function move_cursor_left(n)
   return vim.api.nvim_replace_termcodes(
