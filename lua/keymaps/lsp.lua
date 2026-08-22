@@ -11,28 +11,28 @@ vim.keymap.set("n", "<leader>cJ", function() vim.lsp.buf.workspace_symbol() end,
 vim.keymap.set("n", "<leader>dd", function()
   vim.diagnostic.open_float()
 end, { desc = "open diagnostic on current line, regardless of diagnostic type" })
-vim.keymap.set("n", "<leader>de", function()
+vim.keymap.set("n", "<leader>dE", function()
   vim.diagnostic.open_float(0, {
     severity = vim.diagnostic.severity.ERROR
   })
 end, { desc = "show errors in current buffer" })
-vim.keymap.set("n", "<leader>dw", function()
+vim.keymap.set("n", "<leader>dW", function()
   vim.diagnostic.open_float(0, {
     severity = vim.diagnostic.severity.WARN
   })
 end, { desc = "show warnings in current buffer" })
-vim.keymap.set("n", "<leader>di", function()
+vim.keymap.set("n", "<leader>dI", function()
   vim.diagnostic.open_float(0, {
     severity = vim.diagnostic.severity.INFO
   })
 end, { desc = "show info in current buffer" })
-vim.keymap.set("n", "<leader>dh", function()
+vim.keymap.set("n", "<leader>dH", function()
   vim.diagnostic.open_float(0, {
     severity = vim.diagnostic.severity.HINT
   })
 end, { desc = "show hints in current buffer" })
 
-vim.keymap.set("n", "<leader>da", function()
+vim.keymap.set("n", "<leader>dA", function()
   local diags = vim.diagnostic.get(0)
   if vim.tbl_isempty(diags) then
     vim.notify("No diagnostics")

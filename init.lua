@@ -1,17 +1,19 @@
 --Plugins
 require("config.lazy")
+
 require("config.colors")
 require("config.diagnostics")
 require("config.mermaid")
 --require("config.evil_lualine")
 require("config.main_lualine")
 
---keymaps
-require("keymaps.lsp")
-
 --colorscheme/syntax
 vim.cmd.colorscheme("catppuccin-nvim")
 --vim.cmd.colorscheme("tokyonight-night")
+
+--keymaps
+require("keymaps.lsp")
+
 vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschemes and configs usually enable this automatically, but I'll keep it until I understand how things work a little bit better
 vim.cmd("highlight CursorColumn ctermbg=white")
 
