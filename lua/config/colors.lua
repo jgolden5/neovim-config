@@ -3,6 +3,18 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#0000ff" })
     vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#00bbff" })
     vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffff00" })
+    vim.api.nvim_set_hl(0, "DapBreakpoint", {
+      fg="#ff0000",
+    })
+    vim.api.nvim_set_hl(0, "DapBreakpointCondition", {
+      fg="#880088",
+    })
+    vim.api.nvim_set_hl(0, "SignColumn", {
+      fg = "#ffff00",
+    })
+    vim.api.nvim_set_hl(0, "NvimDapVirtualText", {
+      fg = "#00ff00",
+    })
   end,
 })
 
@@ -37,12 +49,5 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.cmd("highlight! link nvimCode nvimCode")
     vim.cmd("highlight! link CQ40Code CQ40Code")
   end,
-})
-
-vim.api.nvim_set_hl(0, "DapBreakpoint", {
-  fg="#ff0000",
-})
-vim.api.nvim_set_hl(0, "DapBreakpointCondition", {
-  fg="#0000ff",
 })
 
