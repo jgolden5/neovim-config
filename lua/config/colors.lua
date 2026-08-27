@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     syntax keyword planCode PLAN
     syntax keyword jobsearchCode JOBSEARCH
     syntax keyword crosserCode CROSSER
+    syntax keyword trueflowCode TRUEFLOW
     syntax keyword tutorCode TUTOR
 
     highlight default planCode guifg=#9010F0 ctermfg=DarkMagenta
@@ -40,14 +41,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     highlight default CQ40Code guifg=#008080 ctermfg=6
     highlight default SeekerCode guifg=#00ffff ctermfg=Cyan
     highlight default jobsearchCode guifg=#ffff00 ctermfg=Yellow
-    highlight default crosserCode guifg=#ffaa00 ctermfg=214
+    highlight default crosserCode guifg=#ffbb00 ctermfg=215
+    highlight default trueflowCode guifg=#ff9900 ctermfg=214
     highlight default tutorCode guifg=#dd8800 ctermfg=94
     ]])
 
-    vim.cmd("highlight! link redCode redCode")
-    vim.cmd("highlight! link ilearnCode ilearnCode")
-    vim.cmd("highlight! link nvimCode nvimCode")
-    vim.cmd("highlight! link CQ40Code CQ40Code")
   end,
 })
 
