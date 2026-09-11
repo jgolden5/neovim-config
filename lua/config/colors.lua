@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     syntax keyword tutorCode TUTOR
     syntax keyword reconCode RECON
     syntax keyword denaliCode DENALI
+    syntax keyword c2cCode C2C
 
     highlight default planCode guifg=#9010F0 ctermfg=DarkMagenta
     highlight default alarisCode guifg=#ff0000 ctermfg=Red
@@ -48,6 +49,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     highlight default tutorCode guifg=#dd8800 ctermfg=94
     highlight default reconCode guifg=#aa00ff ctermfg=181
     highlight default denaliCode guifg=#999999 ctermfg=Gray
+    highlight default c2cCode guifg=#aaaaaa ctermfg=LightGray
     ]])
 
   end,
