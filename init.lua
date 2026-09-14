@@ -13,7 +13,6 @@ vim.cmd.colorscheme("catppuccin-nvim")
 
 --keymaps
 require("keymaps.lsp")
-require("keymaps.pi")
 
 vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschemes and configs usually enable this automatically, but I'll keep it until I understand how things work a little bit better
 vim.cmd("highlight CursorColumn ctermbg=white")
