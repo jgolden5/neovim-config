@@ -140,7 +140,7 @@ vim.keymap.set("n", "<leader><leader>", flashCursor)
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wa<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
-vim.keymap.set("n", "<leader>X", ":xa<CR>")
+vim.keymap.set("n", "<leader>X", ":xa!<CR>")
 vim.keymap.set("n", "ZA", ":xa<CR>")
 vim.keymap.set("n", "<leader>Q", "ZQ")
 
@@ -484,3 +484,12 @@ end)
 --insert mode
 --for some reason, Ctrl+h is also the same as Ctrl+Backspace, so this works as a platform-independent way to backspace a word at a time in insert mode:
 vim.keymap.set("i", "<C-h>", "<C-w>")
+
+--terminal
+vim.keymap.set("n", "<leader>[", ":hor terminal<CR>")
+vim.keymap.set("n", "<leader>{", ":vert terminal<CR>")
+vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<leader>h", "<C-\\><C-n><C-w>h")
+vim.keymap.set("t", "<leader>j", "<C-\\><C-n><C-w>j")
+vim.keymap.set("t", "<leader>k", "<C-\\><C-n><C-w>k")
+vim.keymap.set("t", "<leader>l", "<C-\\><C-n><C-w>l")
