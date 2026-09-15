@@ -488,4 +488,4 @@ vim.keymap.set("i", "<C-h>", "<C-w>")
 --terminal
 vim.keymap.set("n", "<leader>[", ":hor terminal<CR>")
 vim.keymap.set("n", "<leader>{", ":vert terminal<CR>")
-vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-Space>", "<C-\\><C-n>")
