@@ -25,10 +25,17 @@ return {
           win_options = {
             winblend = 0,
           },
+          preview
         }
       }
-      vim.keymap.set("n", "-", require("oil").toggle_float, { desc = "Toggle open parent directory in oil" })
-      --vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory in floating window" })
+      vim.keymap.set("n", "-", function()
+        local filename = vim.fn.expand("%:p")
+        if vim.startswith(filename, "oil") then
+          vim.api.nvim_feedkeys(vim.keycode("<C-o>"), "n", false)
+        else
+          vim.cmd("edit .") --equals ":e .<CR>"
+        end
+      end, { desc = "Toggle open parent directory in oil" })
     end
   }
 }
