@@ -32,13 +32,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     syntax keyword planCode PLAN
     syntax keyword jobsearchCode JOBSEARCH
     syntax keyword interviewCode INTERVIEW
+    syntax keyword meetingCode MEETING
     syntax keyword crosserCode CROSSER
     syntax keyword trueflowCode TRUEFLOW
     syntax keyword tutorCode TUTOR
     syntax keyword reconCode RECON
     syntax keyword denaliCode DENALI
     syntax keyword c2cCode C2C
-    syntax keyword snorkelCode SNORKEL
 
     highlight default planCode guifg=#9010F0 ctermfg=DarkMagenta
     highlight default alarisCode guifg=#ff0000 ctermfg=Red
@@ -47,13 +47,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     highlight default SeekerCode guifg=#00ffff ctermfg=Cyan
     highlight default jobsearchCode guifg=#ffff00 ctermfg=Yellow
     highlight default interviewCode guifg=#000000 guibg=#ffff00 ctermfg=Black ctermbg=Yellow
+    highlight default meetingCode guifg=#000000 guibg=#1133ff ctermfg=Black ctermbg=Blue
     highlight default crosserCode guifg=#ffbb00 ctermfg=215
     highlight default trueflowCode guifg=#ff9900 ctermfg=214
     highlight default tutorCode guifg=#dd8800 ctermfg=94
     highlight default reconCode guifg=#aa00ff ctermfg=181
     highlight default denaliCode guifg=#999999 ctermfg=Gray
     highlight default c2cCode guifg=#aaaaaa ctermfg=LightGray
-    highlight default snorkelCode guifg=#3333ff ctermfg=Blue
     ]])
 
   end,

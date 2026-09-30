@@ -10,6 +10,7 @@ require("config.main_lualine")
 --colorscheme/syntax
 vim.cmd.colorscheme("catppuccin-nvim")
 --vim.cmd.colorscheme("tokyonight-night")
+require("config.custom_icons")
 
 --keymaps
 require("keymaps.lsp")
