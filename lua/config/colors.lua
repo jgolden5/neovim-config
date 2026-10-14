@@ -52,8 +52,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     highlight default trueflowCode guifg=#ff9900 ctermfg=214
     highlight default tutorCode guifg=#dd8800 ctermfg=94
     highlight default reconCode guifg=#aa00ff ctermfg=181
-    highlight default denaliCode guifg=#999999 ctermfg=Gray
-    highlight default c2cCode guifg=#aaaaaa ctermfg=LightGray
+    highlight default denaliCode guifg=#888888 ctermfg=Gray
+    highlight default c2cCode guifg=#bbbbbb ctermfg=LightGray
     ]])
 
   end,

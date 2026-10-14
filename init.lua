@@ -465,6 +465,7 @@ vim.api.nvim_create_autocmd("FileType", {
       local filename = vim.fn.expand("%:t")
       local title = filename
         :gsub("%_", " ")
+        :gsub("%-", " ")
         :gsub("%.md$", "")
         :gsub("%S+", function(word)
           return word:sub(1, 1):upper() .. word:sub(2):lower()
