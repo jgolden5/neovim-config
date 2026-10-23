@@ -478,6 +478,22 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+function SumSelectedScores()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local total = 0
+  for i = start_line, end_line do
+    local num = vim.fn.getline(i):match("^([+-]?%d+%.?%d*)")
+    if num then
+      total = total + tonumber(num)
+    end
+  end
+  vim.fn.append(end_line, string.format("Total: %.1f", total))
+end
+
+
+vim.keymap.set("v", "<leader>=", ":<C-u>lua SumSelectedScores()<CR>")
+
 --language-specific keymaps
 --get markdownlivepreview of current file
 vim.keymap.set("n", "<leader>M", function()
