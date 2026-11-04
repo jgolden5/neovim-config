@@ -8,6 +8,22 @@ return {
 
       -- REQUIRED
       harpoon:setup()
+      -- Additional config
+      harpoon:extend({
+        UI_CREATE = function(cx)
+          vim.keymap.set("n", "<M-v>", function()
+            harpoon.ui:select_menu_item({ vsplit = true })
+          end, { buffer = cx.bufnr })
+
+          vim.keymap.set("n", "<M-x>", function()
+            harpoon.ui:select_menu_item({ split = true })
+          end, { buffer = cx.bufnr })
+
+          vim.keymap.set("n", "<M-t>", function()
+            harpoon.ui:select_menu_item({ tabedit = true })
+          end, { buffer = cx.bufnr })
+        end,
+      })
 
       --add file
       vim.keymap.set("n", "<leader>a", function()
