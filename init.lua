@@ -19,9 +19,6 @@ vim.cmd("syntax on") --supposedly this is unnecessary in neovim since colorschem
 vim.cmd("highlight CursorColumn ctermbg=white")
 
 --setting options
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
 vim.opt.matchpairs:append("<:>")
 vim.opt.expandtab = true
 vim.opt.showcmd = true
@@ -36,14 +33,15 @@ vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 500
 vim.opt.hlsearch = false
 
---tab stuff
---tab should ALWAYS be 2 spaces; quit trying to get wise, special filetypes (looking at you, /usr/share/nvim/runtime/ftplugin/*.vim)
+-- Default to 2-space indentation; Python uses 4.
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
-    vim.bo.shiftwidth = 2
-    vim.bo.softtabstop = 2
-    vim.bo.tabstop = 2
+    local width = vim.bo.filetype == "python" and 4 or 2
+    vim.bo.shiftwidth = width
+    vim.bo.softtabstop = width
+    vim.bo.tabstop = width
+    vim.bo.expandtab = true
   end,
 })
 
